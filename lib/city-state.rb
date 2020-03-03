@@ -4,7 +4,7 @@ module CS
   # CS constants
   MAXMIND_ZIPPED_URL = "http://geolite.maxmind.com/download/geoip/database/GeoLite2-City-CSV.zip"
   FILES_FOLDER = File.expand_path('../db', __FILE__)
-  MAXMIND_DB_FN = File.join(FILES_FOLDER, "GeoLite2-City-Locations-en.csv")
+  MAXMIND_DB_FN = File.join(FILES_FOLDER, "GeoLite2-City-Locations-fr.csv")
   COUNTRIES_FN = File.join(FILES_FOLDER, "countries.yml")
 
   @countries, @states, @cities = [{}, {}, {}]
@@ -21,7 +21,7 @@ module CS
     # recursively searches for "GeoLite2-City-Locations-en"
     Zip::File.open(f_zipped) do |zip_file|
       zip_file.each do |entry|
-        if entry.name["GeoLite2-City-Locations-en"].present?
+        if entry.name["GeoLite2-City-Locations-fr"].present?
           fn = entry.name.split("/").last
           entry.extract(File.join(FILES_FOLDER, fn)) { true } # { true } is to overwrite
           break
